@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <ul>
+        {% for x in func_list %}
+            <li>{{x}}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock content %}
