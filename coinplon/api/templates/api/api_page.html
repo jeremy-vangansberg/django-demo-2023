@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load add_var %}
 
 {% block content %}
 <div class="container">
@@ -8,7 +9,11 @@
         {{form}}
         <button type="submit" class='btn btn-primary'>submit</button>
     </form>
-{{info}}
+{% if request.method == "POST" %}
+<p>Le prix est de : {{info.data|var:"price"}} </p>
+{% endif %}
+
+    
 </div>
 {% endblock content %}
 

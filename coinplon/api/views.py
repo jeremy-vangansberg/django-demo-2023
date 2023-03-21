@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .forms import ApiForm
 from requests import Request, Session
 import os
+import json
 
 def api_view(request):
     url = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest'
@@ -19,6 +20,8 @@ def api_view(request):
         if form.is_valid() :
             response = session.get(url, params=form.cleaned_data)
             info = response.text
+            info = json.loads(info)
+            print(type(info))
     return render(request, 'api/api_page.html', context={
         'form': form,
         'info': info}
