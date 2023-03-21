@@ -20,6 +20,13 @@
         <li class="nav-item"><a href="{{url_func_list}}" 
           class="nav-link {% if request.path == url_func_list %}active{% endif %}">Fonctionnalités</a>
         </li>
+        {% if user.is_authenticated %}
+        <span class="nav-bar-text">Logged as : {{user.get_username}}</span>
+        <a class="btn btn-sm btn-outline-secondary" href="{% url 'logout' %}?next={{request.path}}">log out</a>
+        {% else %}
+        <span class="nav-bar-text">You are not logged in</span>
+        <a class="btn btn-sm btn-outline-secondary" href="{% url 'login' %}">login</a>
+        {% endif %}
 
       </ul>
     </header>
